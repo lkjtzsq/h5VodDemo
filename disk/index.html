@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <title>
+    H5 Aliplayer Demo
+  </title>
+  <link rel="stylesheet" href="http://g.alicdn.com/de/prismplayer/2.7.4/skins/default/aliplayer-min.css" />
+
+  <link rel="stylesheet" href="lib/css/frozen.css" />
+  <script type="text/javascript" src="http://player.alicdn.com/resource/player/lib/flexible.min.js"></script>
+  <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.7.4/aliplayer-min.js"></script>
+  <script type="text/javascript" src="lib/mqttws31.js"></script>
+  <script type="text/javascript" src="lib/zepto.min.js"></script>
+  <script type="text/javascript" src="lib/frozen.min.js"></script>
+  <script type="text/javascript" src="lib/reload.js"></script>
+</head>
+
+<body>
+  <div class="header">
+  <div class="header-upic">
+    <img />
+  </div>
+  <div class="header-udata">
+    <h1></h1>
+    <p></p>
+  </div>
+</div>
+
+    <div class="player-area">
+      <div class="prism-player" id="J_prismPlayer">
+  <img src="http://liveroom-img.oss-cn-qingdao.aliyuncs.com/logo.png" id="poster"/>
+  <div id="playBtn"></div>
+</div>
+
+        <div class="ui-tab content-container">
+          <ul class="ui-tab-nav ui-border-b">
+            <li class="current">直播简介<i></i></li>
+            <li class="">讨论区
+              <i></i>
+            </li>
+          </ul>
+          <ul class="toggle-box">
+            <li class="play-list" style="display:block;">
+  <div class="live-data">
+    <h1 class="live-title"></h1>
+    <div class="live-count">
+      <span class="live-time">开始时间：</span>
+      <span class="live-time-count"></span>
+      <span class="live-view-count"></span>
+      <span class="live-view">观看人数：</span>
+    </div>
+    <div class="live-txt"></div>
+  </div>
+</li>
+
+            <li class="comment-list">
+   <div class="comment-container"></div>
+</li>
+
+          </ul>
+        </div>
+    </div>
+    <div class="comment-textbox" style="display:none">
+    <div class="send-container">
+        <div class="write-pl">写评论...</div>
+        <div class="favoriate-send">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Q0QyRUI5NzI2REVFMTFFODhFNzM4ODBCQ0Q1RjA0NzMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6REYxNDk3RjY2REVFMTFFODhFNzM4ODBCQ0Q1RjA0NzMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDRDJFQjk3MDZERUUxMUU4OEU3Mzg4MEJDRDVGMDQ3MyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDRDJFQjk3MTZERUUxMUU4OEU3Mzg4MEJDRDVGMDQ3MyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PulAQpkAAAK/SURBVHjaxJc7aFNRGIBzk5vEtqKiBiWDJIjgG20JdahKNgUHp5QuBadaEMGSJikIimjJyyRCMmQQB7FkEsWhi+IgPosgCNUOkqFYqDpETNI8mtTvyBVKmtrcPK4//PnPufznfOc/zz+STqXEYrGjpVLp6srKyjGqS2jKbrcHXS5XRU0/ejXOoVCov1AovAZ6Hv3Kpy7sZDqdfqA2AFXgarUawiwD6/P5fE6Px7NfkqQU9cFAIHCiI2Ci7cEMoI+AfhTfgFYNBkNEcekMGMhOIpMoLtTMQkYpbu0IGMABZQCfdW2QhsFEe0RYpnamHWC5UUej0TjFMZp3u92zmoLHxsbE8Unp2iRy7c41m83dolwulzehg2Inm0ymIcBLGyzFLtXgYDB4hoYhNtChfD4v1ezmb7IsG5Vbao1YLJb5xcXFLH4XOcuO9fwUmUPver3eNxLOTirP0O/oE/SXAuxiICPYlzgO/Gv0fr//LH43xTg2CNQqLiC9Xn9OJtIbVDI0PA5goabDkUamjQtlGjO9kR8zu5dgZiqVyoQ4Tr1An9dCOyFcsV9gvUMPC3A3Ued1GkgikdiM6Yc3q9dpKNlsdhToNtb4nmZgES3QcaY57XA4pmQNo70idj1gj9PpXNYk4ng8voNo3UA/2Wy2+6quzFYkl8tNYLagF/6mSB2POBqN2jCX0Lcc2YeqH4lmpVgs3sKY2cnjTedcaiUcDvexrkMUH3N5vNAMzNV4m01VAe5tKctUIzw+IgU+TTHJ2s6tATMacUfvaSc0mUyKZzSI/uRJvV4352JUT7GneIlGlQYtSyaTuUa/+yhOkir9qJu18lTtxuk9+uetZAaKq7IKkUsX+PZBRVIozutB8Qrx1+Yk57ZUFyx+IpHIdtKcyzj3Uu1Z1YnUxD7I0u6V1Wq9Mzw8nFs3T8dJ9z/ktwADAFEbKo5+HKsyAAAAAElFTkSuQmCC"></img>
+        </div>
+    </div>
+</div>
+
+<script src="./js/h5demo.js?cf8c32841cad7bd03850"></script></body>
+<script>
+  $(function() {
+    // var option = {
+    //   role: 'tab',
+    //   autoplay: false
+    // };
+    // var tab = new fz.Scroll('.ui-tab', option);
+    /* 滑动开始前 */
+    // tab.on('beforeScrollStart', function(fromIndex, toIndex) {
+    //   if (toIndex == 1) {
+    //     $('.comment-textbox').hide();
+    //   } else {
+    //     $('.comment-textbox').show();
+    //   }
+    // })
+    $('.ui-tab-nav > li').click(function() {
+      $(this).addClass('current').siblings('li').removeClass('current');
+      var index = $(this).index();
+      $('.toggle-box li').eq(index).css({
+        'display': 'block'
+      }).siblings('li').css({
+        'display': 'none'
+      });
+    });
+  })
+</script>
+
+</html>

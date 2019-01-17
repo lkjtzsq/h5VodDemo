@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.header-upic {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.header-upic img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.header-udata {
+  width: 100%;
+}
+
+.header-udata h1 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: -1px;
+}
+
+.header-udata p {
+  font-size: 12px;
+  color: #969696;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.careBtn {
+  min-width: 52px;
+  text-align: center;
+  margin-left: 10px;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  color: #c4c4c4;
+  font-size: 15px;
+  height: 22px;
+  margin-top: 8px;
+  line-height: 22px;
+}

@@ -1,0 +1,41 @@
+.enter-x5-player video.center
+{
+	object-position:50% 50% !important;
+}
+
+.prism-progress-cursor
+{
+  margin-left:0px !important;
+}
+
+/*.enter-x5-player video
+{
+	object-position: 0px 10px;
+	/*height:auto !important;*/
+
+/*}*/
+
+
+video::-webkit-media-controls {
+  display:none !important;
+}
+#poster{
+	position: absolute;
+	z-index: 998;
+	left:0;
+	top:0;
+	width:100%;
+	height:250px;
+}
+#playBtn{
+	position: absolute;
+	width:70px;
+	height:70px;
+	background: url(../../images/play-btn.png) center center;
+	background-size: 100% 100%;
+	left:50%;
+	top:50%;
+	margin-left: -35px;
+	margin-top: -35px;
+	z-index: 999;
+}

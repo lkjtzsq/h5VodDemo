@@ -1,0 +1,30 @@
+html,
+body
+{
+	margin:0;
+	padding:0;
+}
+
+body
+{
+  padding-bottom: 60px;
+  font-size:16px !important;
+	overflow-x: hidden;
+	background: #fff;
+}
+
+ul
+{
+	padding:0px;
+	margin:0px;
+}
+
+ul li
+{
+    list-style-type:none;
+}
+
+.content-container
+{
+}
+.toggle-box li{display: none;}
